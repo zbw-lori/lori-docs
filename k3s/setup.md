@@ -74,3 +74,16 @@ After installing the cert-manager, we have to apply the secret and cluster-issue
 ```shell
 kubectl apply -f files/cert-amanger/
 ```
+
+## Useful Commands
+
+```shell
+# pod with dns / curl / telnet tools
+kubectl run toolbox-pod --rm --tty -i --restart='Never' --image  docker.io/jsha/dnsutils --namespace lori-app --command -- bash
+
+# mysql client
+kubectl run lori-mysql-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mysql:8.0.33-debian-11-r12 --namespace lori-app --env MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD --command -- bash
+
+# connect to mysql server:
+# mysql --host=lori-mysql-primary --user=user --password=password lori
+```
