@@ -66,7 +66,8 @@ helm install \
   --namespace cert-manager \
   --create-namespace \
   --version v1.11.0 \
-  --set installCRDs=true
+  --set installCRDs=true \
+  --set 'extraArgs={--dns01-recursive-nameservers-only,--dns01-recursive-nameservers=8.8.8.8:53\,1.1.1.1:53}'
 ```
 
 After installing the cert-manager, we have to apply the secret and cluster-issuer for let's encrpyt with cloudflare.
